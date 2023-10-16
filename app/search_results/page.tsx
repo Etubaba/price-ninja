@@ -1,9 +1,16 @@
 import ProductItem from "@/components/ProductItem";
-import { products } from "@/constant";
+import { BASE_URL } from "@/constant";
 import { ProductType } from "@/types";
+import { fetchData } from "@/utils/fetchData";
 import React from "react";
+type queryType = {
+  search: string;
+};
 
-const page = () => {
+const page = async ({ searchParams }: { searchParams: queryType }) => {
+  const query = searchParams.search;
+  const products = await fetchData(`${BASE_URL}search?search=${query}`);
+
   return (
     <div className="md:px-10 px-4 py-3 ">
       <div className="w-full rounded-md px-4 md:px-10 h-40 md:h-60 py-4 md:py-6 bg-[#FBF0E4]">
@@ -21,7 +28,7 @@ const page = () => {
       </div>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((item: ProductType, idx: number) => (
+        {products?.map((item: ProductType, idx: number) => (
           <ProductItem product={item} />
         ))}
       </div>

@@ -2,7 +2,7 @@ import { ProductType } from "@/types";
 import React from "react";
 
 const ProductItem = ({
-  product: { image, prize, title, website },
+  product: { image, price, title, website },
 }: {
   product: ProductType;
 }) => {
@@ -21,7 +21,7 @@ const ProductItem = ({
           {website.charAt(0).toUpperCase() + website.slice(1)}
         </p>
 
-        <h2 className="text-primary  font-semibold text-lg">₦{prize}</h2>
+        <h2 className="text-primary  font-semibold text-lg">{price}</h2>
       </div>
     </div>
   );
