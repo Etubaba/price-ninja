@@ -2,6 +2,7 @@ import ProductItem from "@/components/ProductItem";
 import { BASE_URL } from "@/constant";
 import { ProductType } from "@/types";
 import { fetchData } from "@/utils/fetchData";
+import { BiRefresh } from "react-icons/bi";
 import React from "react";
 type queryType = {
   search: string;
@@ -27,11 +28,27 @@ const page = async ({ searchParams }: { searchParams: queryType }) => {
         <h1 className="text-xl font-semibold text-[#1E202B]">Search Results</h1>
       </div>
 
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-        {products?.map((item: ProductType, idx: number) => (
-          <ProductItem product={item} />
-        ))}
-      </div>
+      {Array.isArray(products) && products.length !== 0 ? (
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+          {products?.map((item: ProductType, idx: number) => (
+            <ProductItem key={idx} product={item} />
+          ))}
+        </div>
+      ) : (
+        <div className={`my-6 `}>
+          <div className="border  flex flex-col bg-white  space-y-3 p-5 md:p-20 justify-center items-center rounded-md">
+            <div className=" bg-[#F2F5FF]   border rounded-full p-2">
+              <BiRefresh className="text-primary text-lg" />
+            </div>
+
+            <p className="text-title  my-2 text-lg font-semibold">
+              Please Reload
+            </p>
+
+            <p className="text-sm  text-textcolor  text-center">{`There was an error fetching ${query} please reload. `}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

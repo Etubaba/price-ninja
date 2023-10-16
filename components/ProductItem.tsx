@@ -11,12 +11,14 @@ const ProductItem = ({
       <div className="w-full rounded-tr-md rounded-tl-md relative h-48 inline-block overflow-hidden">
         <img
           src={image}
-          className="w-full zoom-image hover:opacity-90 mb-2 h-full cursor-pointer "
+          className="w-full zoom-image object-contain hover:opacity-90 mb-2 h-full cursor-pointer "
           alt={title}
         />
       </div>
       <div className="px-2 pb-3">
-        <h1 className="text-[#1E202B] text-lg font-semibold">{title}</h1>
+        <h1 className="text-[#1E202B] text-lg font-semibold">
+          {title.substring(0, 47)}
+        </h1>
         <p className="text-[#9095A6] text-lg">
           {website.charAt(0).toUpperCase() + website.slice(1)}
         </p>
