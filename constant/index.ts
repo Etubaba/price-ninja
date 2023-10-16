@@ -1,3 +1,5 @@
+export const BASE_URL = `https://price-checker-rose.vercel.app/`;
+
 export const products = [
   {
     image: "searchbg1.jpg",
