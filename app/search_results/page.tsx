@@ -45,7 +45,7 @@ const page = async ({ searchParams }: { searchParams: queryType }) => {
               Please Reload
             </p>
 
-            <p className="text-sm  text-textcolor  text-center">{`There was an error fetching ${query} please reload. `}</p>
+            <p className="text-sm  text-textcolor  text-center">{`There was an error fetching ${query} please reload the page. `}</p>
           </div>
         </div>
       )}
